@@ -1,0 +1,17 @@
+<h1>Tasks I have to do</h1>
+<ul>
+  <% @tasks.each do |task| %>
+<li>
+        <% if task.completed? %>
+          <i class="fa-regular fa-square-check"></i>
+        <% else %>
+          <i class="fa-regular fa-square"></i>
+        <% end %>
+        <%= link_to task.title, task_path(task.id) %>
+        <%= button_to task_path(task.id), method: :delete do %>
+          <i class="fa-regular fa-trash-can"></i> Supprimer
+        <% end %>
+      </li>  <% end %>
+</ul>
+
+<%= link_to 'Ajouter une tache', new_task_path %>
